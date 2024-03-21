@@ -62,9 +62,11 @@ public class UserController {
             if(authentication.isAuthenticated()){
                 return jwtService.generateToken(authRequest.getUsername());
             } else {
+                System.out.println("No autenticado en el login");
                 throw new UsernameNotFoundException("Usuario Invalido");
             }
         }catch (Exception e){
+            System.out.println("No autenticado en el catch");
             throw new UsernameNotFoundException("Usuario Invalido");
         }
     }
