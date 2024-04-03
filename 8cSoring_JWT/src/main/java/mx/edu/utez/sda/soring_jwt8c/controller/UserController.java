@@ -4,6 +4,8 @@ import mx.edu.utez.sda.soring_jwt8c.entity.AuthRequest;
 import mx.edu.utez.sda.soring_jwt8c.entity.UserInfo;
 import mx.edu.utez.sda.soring_jwt8c.service.JwtService;
 import mx.edu.utez.sda.soring_jwt8c.service.UserInfoService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -16,6 +18,8 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/auth")
 public class UserController {
+    private static final Logger logger = LoggerFactory.getLogger(UserController.class);
+
     @Autowired
     private UserInfoService service;
 
@@ -30,6 +34,11 @@ public class UserController {
 
     @GetMapping("/index")
     public String index(){
+        logger.trace("Este es un mensaje de trace");
+        logger.debug("Este es un mensaje de debug");
+        logger.info("Este es un mensaje de info");
+        logger.warn("Este es un mensaje de warning");
+        logger.error("Este es un mensaje de errror");
         return "Servicio Index";
     }
 
